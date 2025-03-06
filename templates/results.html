@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Recommended Movies</title>
+    <style>
+      .movie {
+        display: flex;
+        align-items: center;
+        margin-bottom: 20px;
+      }
+      .movie img {
+        width: 150px;
+        margin-right: 15px;
+        border-radius: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Recommended Movies</h1>
+
+    {% if movies %} {% for movie in movies %}
+    <div class="movie">
+      <img
+        src="https://image.tmdb.org/t/p/w500{{ movie['poster_path'] }}"
+        alt="{{ movie['title'] }}"
+      />
+      <div>
+        <h3>{{ movie['title'] }}</h3>
+        <p><strong>Rating:</strong> {{ movie['vote_average'] }}</p>
+        <p>{{ movie['overview'] }}</p>
+      </div>
+    </div>
+    {% endfor %} {% else %}
+    <p>No movies found.</p>
+    {% endif %}
+  </body>
+</html>
