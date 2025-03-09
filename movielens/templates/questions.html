@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Preferences</title>
+    <link rel="stylesheet" href="/static/questions.css">
+</head>
+<body>
+    <section id="top">
+        <nav id="navbar">
+          <a href="#navbar"><img class="navbar-logo" src="/static/popcorn.png" alt="icon"></a>
+            <p><a href="#">Nuvie</a></p>
+            <ul class="nav-list">
+                <li><a href="#">Home</a></li>
+                <li><a href="/templates/homepage.html">About</a></li>
+                <li><a href="/templates/contact.html">Contact</a></li>
+                
+    
+    
+            </ul>
+        </nav>
+    </section>
+    <div class="background-container">
+        <img class="background-gif" src="/static/movies.gif"alt="Movie GIF">
+    </div>
+    
+    <section class="hero">
+    <form id="preferencesForm" action="/submit" method="POST">
+        <!-- Question 1: Genre -->
+        <div class="question active" id="q1">
+            <label>Which movie genres do you enjoy?</label><br>
+            <div class="options">
+                <label><input type="checkbox" name="genre" value="28"> Action</label>
+                <label><input type="checkbox" name="genre" value="18"> Drama</label>
+                <label><input type="checkbox" name="genre" value="878"> Sci-Fi</label>
+                <label><input type="checkbox" name="genre" value="53"> Thriller</label>
+                <label><input type="checkbox" name="genre" value="10749"> Romance</label>
+                <label><input type="checkbox" name="genre" value="99"> Documentary</label>
+                <label><input type="checkbox" name="genre" value="16"> Animation</label>
+                <label><input type="checkbox" name="genre" value="27"> Horror</label>
+                <label><input type="checkbox" name="genre" value="35"> Comedy</label>
+            </div>
+            
+        <button type="button" onclick="nextQuestion(1)">Next</button>
+        </div>
+
+        <!-- Question 2: Mood -->
+        <div class="question" id="q2">
+            <label>What type of movies suit your mood?</label><br>
+            <div class="options">
+                <label><input type="checkbox" name="mood" value="Feel-Good"> Feel-Good</label>
+                <label><input type="checkbox" name="mood" value="Dark & Intense"> Dark & Intense</label>
+                <label><input type="checkbox" name="mood" value="Emotional & Heartfelt"> Emotional & Heartfelt</label>
+                <label><input type="checkbox" name="mood" value="Light & Funny"> Light & Funny</label>
+                <label><input type="checkbox" name="mood" value="Adventurous"> Adventurous</label>
+                <label><input type="checkbox" name="mood" value="Suspenseful"> Suspenseful</label>
+                <label><input type="checkbox" name="mood" value="Romantic"> Romantic</label>
+                <label><input type="checkbox" name="mood" value="Thought-Provoking"> Thought-Provoking</label>
+            </div>
+        
+
+            <br><button type="button" onclick="prevQuestion(2)">Back</button>
+            <button type="button" onclick="nextQuestion(2)">Next</button>
+            </div>
+
+        <!-- Question 3: Popularity -->
+        <div class="question" id="q3">
+            <label>Do you prefer movies that are...</label><br>
+            <select name="popularity" class="popularity">
+                <div class="options">
+                <option value="Popular & Trending">Popular & Trending</option>
+                <option value="Critically Acclaimed">Critically Acclaimed</option>
+                <option value="Lesser-known & underrated">Lesser-known & underrated</option>
+                <option value="Box-office success">Box-office success</option>
+                </div>
+
+            </select>
+            <br><button type="button" onclick="prevQuestion(3)">Back</button>
+            <button type="button" onclick="nextQuestion(3)">Next</button>
+        </div>
+
+        <!-- Question 4: Rating -->
+        <div class="question" id="q4">
+            <label>What is the minimum IMDb rating you prefer?</label><br>
+            <select name="rating">
+                <div class="options">
+                <option value="1">1+</option>
+                <option value="2">2+</option>
+                <option value="3">3+</option>
+                <option value="4">4+</option>
+                </div>
+            </select>
+            <br><button type="button" onclick="prevQuestion(4)">Back</button>
+            <button type="submit">Submit</button>
+        </div>
+    </form>
+    </section>
+
+    <script>
+        let currentQuestion = 1;
+        
+        function nextQuestion(step) {
+            document.getElementById("q" + step).classList.remove("active");
+            document.getElementById("q" + (step + 1)).classList.add("active");
+        }
+
+        function prevQuestion(step) {
+            document.getElementById("q" + step).classList.remove("active");
+            document.getElementById("q" + (step - 1)).classList.add("active");
+        }
+
+        document.getElementById("preferencesForm").onsubmit = function(event) {
+            //event.preventDefault(); // Prevent form refresh
+            
+            const formData = new FormData(this);
+            fetch('/submit', {
+                method: 'POST',
+                body: formData
+            }).then(response => response.text())
+            .then(data => {document.open();
+        document.write(data);  
+        document.close();});
+        };
+    </script>
+
+</body>
+</html>

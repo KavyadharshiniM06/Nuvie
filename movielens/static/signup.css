@@ -1,0 +1,170 @@
+body {
+    font-family: Arial, sans-serif;
+}
+
+#navbar {
+    background-color: black;
+    color: white;
+    margin-top: -10px;
+    height:70px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    --font-family-sans-serif: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+}
+
+.nav-list {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+.nav-list li {
+    cursor: pointer;
+    font-size:18px;
+}
+#navbar p{
+    margin-left: -1050px;
+        font-size:20px;
+        font-family: cursive;
+}
+#navbar a{
+    text-decoration: none;
+    color:inherit;
+
+}
+.navbar-logo {
+    width: 80px;
+}
+.background-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: url('movies.gif') no-repeat center center/cover;
+    z-index: -1; /* Send it behind other content */
+}
+
+/* GIF Styling */
+.background-gif {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 60%; /* Adjust size */
+    max-width: 800px;
+    opacity: 0.8; /* Optional transparency */
+}
+
+.hero {
+    --font-family-sans-serif: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+    color: aliceblue;
+    width: 40%;
+    height: 80vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+    margin: 0 auto;
+    box-sizing: border-box;
+    border-radius: 2ch;
+    box-shadow: #6960c6;
+}
+
+.hero:hover {
+    transform: translateY(-5px);
+}
+
+.hero p {
+    width: 90%;
+    text-align: center;
+    margin: 20px;
+    display: block;
+    justify-content: space-around;
+}
+
+#decor {
+    font-style: inherit;
+    font-weight: 700;
+}
+
+
+.hero h1 {
+    font-size: 4ch;
+    margin-top: 10px;
+}
+
+#sign-up-box {
+    padding: 20px 30px;
+    border-radius: 10px;
+    width: 300px;
+    margin-top: -5px;
+    margin-bottom: -10px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+#sign-up-box label {
+    color: white;
+    margin-bottom: 5px;
+    margin-top: 5px;
+    font-size: large;
+}
+
+#email-box, #password-box, #username, #confirm-password {
+    width: 100%;
+    padding: 10px;
+    min-width: 200px; 
+    margin: 10px 0;
+    border: none;
+    border-radius: 5px;
+    background-color: #fff;
+    font-size: 1em;
+}
+
+/* Button Styling */
+.btn-primary {
+    height: 5vh;
+    width: 80%;
+    margin-top: 30px;
+    background-color: #e7e0f0;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    display: block;
+    justify-content: center;
+    margin-left: 35px;
+    font-size: medium;
+}
+
+.btn-primary:hover {
+    background-color: lightgray;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+#sign-up-box p {
+    margin-top: 10px;
+    margin-bottom: -10px;
+}
+
+#login-link {
+    text-decoration: underline;
+    cursor: pointer;
+    
+}
+
+#login-link a{
+    text-decoration: none;
+    color: inherit;
+}
