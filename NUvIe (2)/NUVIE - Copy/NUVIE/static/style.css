@@ -1,0 +1,82 @@
+body.landing-page {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  background: url("/static/movies.gif") no-repeat center center/cover;
+  color: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.container {
+  text-align: center;
+  padding: 2rem;
+  max-width: 800px;
+  width: 100%;
+}
+
+header h1 {
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.highlight {
+  color: #ffcc70;
+}
+
+.tagline {
+  font-size: 1.2rem;
+  color: #cccccc;
+  margin-bottom: 2rem;
+}
+
+.em {
+  font-style: italic;
+  color: #ffdca8;
+}
+
+.option-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  align-items: center;
+  justify-content: center;
+}
+
+@media (min-width: 600px) {
+  .option-container {
+    flex-direction: row;
+  }
+}
+
+.option-card {
+  background: rgba(255, 255, 255, 0.05);
+  border: 2px solid #333;
+  border-radius: 20px;
+  padding: 1.5rem;
+  text-align: center;
+  text-decoration: none;
+  color: #fff;
+  width: 260px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.option-card:hover {
+  background: rgba(255, 255, 255, 0.12);
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
+}
+
+.option-card h2 {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+  color: #ffcc70;
+}
+
+.option-card p {
+  font-size: 1rem;
+  color: #ddd;
+}

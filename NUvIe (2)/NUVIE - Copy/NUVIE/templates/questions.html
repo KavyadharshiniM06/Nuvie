@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Movie Preferences</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: Arial;
+        background: url("/static/movies.gif") no-repeat center center/cover;
+        color: #fff;
+      }
+
+      #navbar {
+        background-color: black;
+        color: white;
+        height: 70px;
+        display: flex;
+        justify-content: center;
+        padding: 0 40px;
+      }
+
+      #navbar p {
+        font-size: 22px;
+        color: white;
+      }
+
+      #navbar a {
+        color: white;
+        text-decoration: none;
+        font-size: 18px;
+      }
+      #navbar img {
+        width: 80px;
+      }
+
+      .form-container {
+        max-width: 80%;
+        margin: auto;
+        padding: 40px;
+        background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+        border-radius: 20px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+      }
+
+      h1 {
+        text-align: center;
+        font-size: 32px;
+        margin-bottom: 30px;
+      }
+
+      form {
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+        align-items: center;
+      }
+
+      .section {
+        width: 100%;
+        max-width: 600px;
+        text-align: left;
+      }
+
+      .section label {
+        font-size: 18px;
+        font-weight: bold;
+        margin-bottom: 10px;
+        display: block;
+      }
+
+      .genres-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+        margin-top: 10px;
+      }
+
+      .genres-grid label {
+        font-weight: normal;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      select {
+        padding: 10px;
+        width: 100%;
+        border-radius: 8px;
+        border: 2px solid #ff6363;
+        font-size: 1rem;
+        background-color: #fffbe6;
+        color: #333;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      }
+
+      button {
+        margin-top: 30px;
+        padding: 12px 30px;
+        font-size: 16px;
+        background-color: beige;
+        color: #333;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        font-weight: 500;
+        transition: background-color 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      button:hover {
+        background-color: lightgray;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+      }
+      #loader {
+        margin-top: 30px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        color: #fff;
+        font-style: italic;
+      }
+
+      .spinner {
+        border: 6px solid #f3f3f3;
+        border-top: 6px solid #ff6363;
+        border-radius: 50%;
+        width: 60px;
+        height: 60px;
+        animation: spin 1s linear infinite;
+        margin-bottom: 15px;
+      }
+
+      @keyframes spin {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="navbar">
+      <img src="/static/popcorn.png" alt="logo" />
+      <p><a href="/"> Nuvie</a></p>
+    </div>
+
+    <div class="form-container">
+      <h1>Find Movies You’ll Love</h1>
+      <form action="/submit" method="POST">
+        <!-- Genres -->
+        <div class="section">
+          <label>Pick your favorite genres</label>
+          <div class="genres-grid">
+            <label
+              ><input type="checkbox" name="genre" value="Action" />
+              Action</label
+            >
+            <label
+              ><input type="checkbox" name="genre" value="Drama" /> Drama</label
+            >
+            <label
+              ><input type="checkbox" name="genre" value="Sci-Fi" />
+              Sci-Fi</label
+            >
+            <label
+              ><input type="checkbox" name="genre" value="Thriller" />
+              Thriller</label
+            >
+            <label
+              ><input type="checkbox" name="genre" value="Romance" />
+              Romance</label
+            >
+            <label
+              ><input type="checkbox" name="genre" value="Documentary" />
+              Documentary</label
+            >
+            <label
+              ><input type="checkbox" name="genre" value="Animation" />
+              Animation</label
+            >
+            <label
+              ><input type="checkbox" name="genre" value="Horror" />
+              Horror</label
+            >
+            <label
+              ><input type="checkbox" name="genre" value="Comedy" />
+              Comedy</label
+            >
+          </div>
+        </div>
+
+        <div class="section">
+          <label>Pick your favorite tags</label>
+          <div class="genres-grid">
+            <label><input type="checkbox" name="tag" value="music" /> Music</label>
+            <label><input type="checkbox" name="tag" value="gangster" /> Gangster</label>
+            <label><input type="checkbox" name="tag" value="anime" /> Anime</label>
+            <label><input type="checkbox" name="tag" value="funny" /> Funny</label>
+            <label><input type="checkbox" name="tag" value="black comedy" /> Black Comedy</label>
+            <label><input type="checkbox" name="tag" value="fantasy" /> Fantasy</label>
+            <label><input type="checkbox" name="tag" value="inspirational" /> Inspirational</label>
+          </div>
+        </div>
+
+        
+
+        <!-- Release Year -->
+        <div class="section">
+          <label>Preferred release year</label>
+          <select name="year_range">
+            <option value="any">Any</option>
+            <option value="1990-2000">1990–2000</option>
+            <option value="2001-2010">2001–2010</option>
+            <option value="2011-2020">2011–2020</option>
+            <option value="2021-2024">2021–2024</option>
+          </select>
+        </div>
+
+        <!-- IMDb Rating -->
+        <div class="section">
+          <label>Minimum IMDb rating</label>
+          <select name="rating">
+            <option value="1">1+</option>
+            <option value="2">2+</option>
+            <option value="3">3+</option>
+            <option value="4">4+</option>
+            
+          </select>
+        </div>
+
+        <!-- Submit -->
+        <button type="submit">Show Me the Movies 🎥</button>
+      </form>
+      <div id="loader" style="display: none">
+        <div class="spinner"></div>
+        <p>Fetching your cinematic vibe... 🎬✨</p>
+      </div>
+    </div>
+    <script>
+      const form = document.querySelector("form");
+      const loader = document.getElementById("loader");
+
+      form.addEventListener("submit", () => {
+        loader.style.display = "flex";
+      });
+    </script>
+  </body>
+</html>

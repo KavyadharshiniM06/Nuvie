@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>🎬 Movie Recommender</title>
+    <link rel="stylesheet" href="/static/recommender.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <h1 class="main-title">🍿 Ready to Binge?</h1>
+      <p class="subtitle">
+        Pick a movie, and we’ll line up your next obsession.
+      </p>
+
+      <form method="POST">
+        <label for="movie">Enter a movie name:</label>
+        <input
+          type="text"
+          id="movie"
+          name="movie"
+          placeholder="e.g., Inception"
+          required
+        />
+        <button type="submit">✨Get Recommendations</button>
+      </form>
+      <div id="loader" style="display: none;">
+        <div class="spinner"></div>
+        <p>Fetching your cinematic vibe... 🎬✨</p>
+      </div>
+      
+      {% if recommended %}
+      <h2>Movies similar to <em>{{ selected_movie }}</em>:</h2>
+      <div class="recommendations">
+        {% for rec in recommended %}
+        <div class="movie-card">
+          {% if rec.poster_url %}
+            <img src="{{ rec.poster_url }}" alt="{{ rec.title }} poster" />
+          {% else %}
+            <div class="no-poster">🎬</div>
+          {% endif %}
+          <h3>{{ rec.title }}</h3>
+          <p><strong>Genres:</strong> 
+          {{ rec.genre | join("") }}
+          </p>
+        </div>
+        {% endfor %}
+      </div>
+      {% endif %}
+    </div>
+
+    <script>
+      const form = document.querySelector("form");
+      const loader = document.getElementById("loader");
+
+      form.addEventListener("submit", () => {
+        loader.style.display = "flex";
+      });
+    </script>
+  </body>
+</html>
